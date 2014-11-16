@@ -4,6 +4,14 @@
   %b Name:
   = @list.name
 %p
+  %b Items:
+  %ul
+    = render partial: 'todo_items/todo_item', collection: @list.todo_items
+%h2 add to-do item
+= render 'todo_items/form'
+
+%hr
+%p
   %b Completed:
   = @list.completed
 
