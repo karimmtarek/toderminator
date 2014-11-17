@@ -22,5 +22,5 @@
         %li
           %a(href="#contact") Contact
       .action-btns
-        %button(type="button" class="btn btn-default navbar-btn") Sign in
-        %button(type="button" class="btn btn-success navbar-btn") Sign up
+        = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
+        = link_to 'Sign up', new_user_registration_path, class: "btn btn-success navbar-btn"
