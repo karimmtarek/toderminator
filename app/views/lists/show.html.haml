@@ -1,8 +1,10 @@
-%p#notice= notice
+-# %p#notice= notice
 
 %p
   %b Name:
   = @list.name
+  %b Actions:
+  = link_to 'Delete', list_path(@list), method: :delete, data: { confirm: 'Are you sure?' }
 %p
   %b Items:
   %ul
