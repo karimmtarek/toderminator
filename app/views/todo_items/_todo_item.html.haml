@@ -3,4 +3,4 @@
   = form_for [@list, todo_item] do |f|
     = f.check_box :completed
 
-  = link_to 'complete', list_todo_item_path(@list, todo_item), method: :delete, data: { confirm: 'Is it really completed?'}, remote: true
+  = link_to 'complete', list_todo_item_path(@list, todo_item), method: :delete, data: { confirm: 'Is it really completed?'}
