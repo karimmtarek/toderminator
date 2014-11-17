@@ -7,6 +7,10 @@ gem 'rails', '4.1.6'
 
 # Use Haml for views
 gem 'haml-rails'
+# Sass-powered version of Bootstrap
+gem 'bootstrap-sass', '~> 3.3.1'
+# Autoprefixer with Bootstrap to add browser vendor prefixes automatically
+gem 'autoprefixer-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

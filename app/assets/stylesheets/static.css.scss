@@ -1,0 +1,37 @@
+.navbar{
+  margin-top: 20px;
+}
+.action-btns{
+  float: right;
+  margin-right: 10px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  // Set the fixed height of the footer here
+  height: 60px;
+  .container{
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  .col-md-6{
+    padding: 0;
+  }
+  p{
+    color: #999;
+  }
+}
+.footer-links{
+  float: right;
+  li{
+    display: inline-block;
+    margin-right: 10px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  a{
+    color: #999;
+  }
+}

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'lists#index'
+  root 'static#index'
 
   resources :lists do
     resources :todo_items
