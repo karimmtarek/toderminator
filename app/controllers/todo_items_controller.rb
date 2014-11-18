@@ -8,9 +8,7 @@ class TodoItemsController < ApplicationController
   end
 
   def destroy
-    # @list = List.find(params[:list_id])
     @todo_item = TodoItem.find(params[:id])
-
     @todo_item.destroy
   end
 

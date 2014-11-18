@@ -1,1 +1,1 @@
-$("#todo-<%= @todo_item.id %>").remove()
+$("#todo-<%= @todo_item.id %>").remove();
