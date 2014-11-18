@@ -12,9 +12,6 @@ class TodoItemsController < ApplicationController
     @todo_item = TodoItem.find(params[:id])
 
     @todo_item.destroy
-
-    redirect_to :back
-    # redirect_to list_path(@list)
   end
 
   private
