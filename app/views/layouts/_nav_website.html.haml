@@ -21,6 +21,11 @@
           %a(href="#contact") Testimonials
         %li
           %a(href="#contact") Contact
-      .action-btns
-        = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
-        = link_to 'Sign up', new_user_registration_path, class: "btn btn-success navbar-btn"
+      - if current_user
+        .user-info
+          %p.user-name #{current_user.user_name}, is in the house.
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-btn"
+      - else
+        .action-btns
+          = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
+          = link_to 'Sign up', new_user_registration_path, class: "btn btn-success navbar-btn"

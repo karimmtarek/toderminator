@@ -1,8 +1,14 @@
 .navbar{
   margin-top: 20px;
 }
-.action-btns{
+.action-btns,
+.user-info{
   float: right;
+  margin-right: 10px;
+}
+.user-name{
+  color: #fff;
+  display: inline-block;
   margin-right: 10px;
 }
 .footer {
