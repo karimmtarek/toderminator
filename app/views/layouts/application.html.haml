@@ -10,6 +10,11 @@
     = csrf_meta_tags
   %body
     = render partial: 'layouts/flash'
-    -# p.notice= notice
-    -# p.alert= alert
+    .container
+      .row
+        .col-md-12
+          = render 'layouts/nav_website'
+
     = yield
+
+    = render 'layouts/footer_website'

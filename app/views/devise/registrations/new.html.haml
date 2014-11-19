@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-md-4
+      &nbsp;
+    .col-md-4
+      .well
+        %h2 Sign up
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :user_name, class: 'sr-only'
+            = f.text_field :user_name, autofocus: true, placeholder: 'Username', class: 'form-control'
+          .form-group
+            = f.label :email, class: 'sr-only'
+            = f.email_field :email, placeholder: 'Email', class: 'form-control'
+          .form-group
+            = f.label :password, class: 'sr-only'
+            -# - if @validatable
+              -# %em (#{@minimum_password_length} characters minimum)
+            = f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, class: 'sr-only'
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm password', class: 'form-control'
+          .actions
+            = f.submit "Let's do this", class: "btn btn-success"
+
+      = render "devise/shared/links"
+    .col-md-4
+      &nbsp;
