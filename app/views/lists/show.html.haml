@@ -1,22 +1,16 @@
--# %p#notice= notice
+.row.todo-items
+  .col-md-12
+    .page-header
+      %h1
+        = @list.name
+        %small you've got #{@list.todo_items.size} items
+        = link_to '', list_path(@list), class: "btn btn-danger glyphicon glyphicon-remove pull-right", method: :delete, data: { confirm: 'Delete this list?' }
+        = link_to '', edit_list_path(@list), class: "btn btn-primary glyphicon glyphicon-pencil pull-right"
 
-%p
-  %b Name:
-  = @list.name
-  %b Actions:
-  = link_to 'Delete', list_path(@list), method: :delete, data: { confirm: 'Are you sure?' }
-%p
-  %b Items:
-  %ul
-    = render partial: 'todo_items/todo_item', collection: @list.todo_items
-%h2 add to-do item
-= render 'todo_items/form'
+- if @list.todo_items.size != 0
+  = render partial: 'todo_items/todo_item', collection: @list.todo_items
+-# = link_to 'new to-do item', new_list_todo_item_path(@list, @todo_item)
+-# - fail
+= render partial: 'todo_items/form', locals: {todo_item: @list.todo_items.new}
 
-%hr
-%p
-  %b Completed:
-  = @list.completed
-
-= link_to 'Edit', edit_list_path(@list)
-\|
 = link_to 'Back', lists_path

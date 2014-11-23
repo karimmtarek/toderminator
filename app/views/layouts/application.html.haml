@@ -9,12 +9,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = render partial: 'layouts/flash'
+    = render 'layouts/flash'
     .container
       .row
         .col-md-12
           = render 'layouts/nav_website'
-
-    = yield
+    .container
+      = yield
 
     = render 'layouts/footer_website'

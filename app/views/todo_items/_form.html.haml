@@ -1,4 +1,11 @@
-= form_for([@list, @list.todo_items.build]) do |f|
-  %p= f.label :name
-  %p= f.text_field :name, placeholder: 'Add to-do item here'
-  %p= f.submit
+.row.form.todo
+  .wraper
+    -# - fail
+    = form_for([@list, todo_item]) do |f|
+      = render 'shared/errors', object: todo_item
+      .col-md-10
+        .form-group
+          -# = f.label :name
+          = f.text_field :name, type: 'text', autofocus: true, placeholder: 'Add to-do item here', class: 'form-control'
+      .col-md-2
+        = f.submit(class: 'btn btn-primary')
