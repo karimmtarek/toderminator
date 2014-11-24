@@ -58,7 +58,7 @@ end
 group :development, :test do
   gem 'did_you_mean'
   gem 'better_errors'
-  gem 'jazz_hands'
+  # gem 'jazz_hands'
 end
 
 # Use ActiveModel has_secure_password
