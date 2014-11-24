@@ -12,8 +12,10 @@
     %ul(class="nav navbar-nav")
       - if current_user
         %li
-          %a(href="#") Dashboard
+          -# %span(class="glyphicon glyphicon-dashboard")
+          = link_to 'Dashboard', ''
         %li
+          -# %span(class="glyphicon glyphicon-th-list")
           = link_to 'To-do Lists', lists_path
         - if controller_name == 'todo_items'
           %li(class="active")

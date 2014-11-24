@@ -3,9 +3,14 @@
     = form_for([@list, @todo_item]) do |f|
       -# - fail
       = render 'shared/errors', object: @todo_item
-      .col-md-10
+      .col-md-8
         .form-group
           -# = f.label :name
           = f.text_field :name, type: 'text', autofocus: true, placeholder: 'Add to-do item here', class: 'form-control'
+      .col-md-2
+        .form-group
+          = f.label :days_left
+          = f.select :days_left, TodoItem::RANGE, prompt: "Pick one"
+          -# = f.text_field :days_left, type: 'text', placeholder: 'Days left (1..7)', class: 'form-control'
       .col-md-2
         = f.submit(class: 'btn btn-primary')

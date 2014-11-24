@@ -12,7 +12,8 @@ class TodoItemsController < ApplicationController
       redirect_to list_todo_items_path(@list)
     else
       flash[:warning] = "Error while trying to create an item, please try again."
-      redirect_to :back
+      # redirect_to :back
+      render :new
     end
   end
 
@@ -39,6 +40,6 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params.require(:todo_item).permit(:name)
+    params.require(:todo_item).permit(:name, :days_left)
   end
 end
