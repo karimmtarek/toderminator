@@ -6,7 +6,8 @@
           %span(class="glyphicon glyphicon-th-list")
           = current_user.user_name
           's To-do Lists
-          %small you've got #{@lists.size} of 'em
+          %span(class="label label-info")
+            = pluralize(@lists.size, 'List')
 
   = render 'form'
 
@@ -14,4 +15,4 @@
 - else
   .row
     .col-md-12
-      %p you can't see this.
+      %p= @message

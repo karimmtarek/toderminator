@@ -4,9 +4,13 @@ class ListsController < ApplicationController
   respond_to :html
 
   def index
-    @lists = current_user.lists.all
-    @list = current_user.lists.new
-    respond_with(@lists)
+    if current_user
+      @lists = current_user.lists.all
+      @list = current_user.lists.new
+      respond_with(@lists)
+    else
+      @message = "you can't see this."
+    end
   end
 
   def show
@@ -31,14 +35,17 @@ class ListsController < ApplicationController
       redirect_to lists_path
       # respond_with(@list)
     else
-      flash[:danger] = 'Can\'t create this To-do list, please try again.'
+      flash[:danger] = "Can't create this To-do list, please try again."
+      # redirect_to :back
       respond_with(@list)
+      # render :index
     end
   end
 
   def update
     @list.update(list_params)
-    respond_with(@list)
+    redirect_to list_todo_items_path(@list)
+    # respond_with(@list)
   end
 
   def destroy

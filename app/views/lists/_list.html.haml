@@ -1,7 +1,7 @@
 .row.list
   .col-md-10
     %h2
-      = link_to list.name, list
+      = link_to list.name, list_todo_items_path(list)
       %span(class="label label-info")
         = pluralize(list.todo_items.size, 'Item')
   .col-md-2

@@ -1,37 +1,39 @@
 %nav(class="navbar navbar-inverse" role="navigation")
-  .container
-    .navbar-header
-      %button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+  .navbar-header
+    %button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
 
-      = link_to 'Toderminator', root_path, class: "navbar-brand"
+    = link_to 'Toderminator', root_path, class: "navbar-brand"
 
-    %div(id="navbar" class="collapse navbar-collapse")
-      %ul(class="nav navbar-nav")
-        - if current_user
-          %li
-            %a(href="#") Dashboard
-          %li
-            = link_to 'To-do Lists', lists_path
-        - else
-          %li(class="active")
-            %a(href="#") Home
-          %li
-            %a(href="#about") About
-          %li
-            %a(href="#contact") Features
-          %li
-            %a(href="#contact") Testimonials
-          %li
-            %a(href="#contact") Contact
+  %div(id="navbar" class="collapse navbar-collapse")
+    %ul(class="nav navbar-nav")
       - if current_user
-        .user-info
-          %p.user-name #{current_user.user_name}, is in the house.
-          = link_to '', destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-btn glyphicon glyphicon-off"
+        %li
+          %a(href="#") Dashboard
+        %li
+          = link_to 'To-do Lists', lists_path
+        - if controller_name == 'todo_items'
+          %li(class="active")
+            %a= list_name
       - else
-        .action-btns
-          = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
-          = link_to 'Sign up', new_user_registration_path, class: "btn btn-success navbar-btn"
+        %li(class="active")
+          %a(href="#") Home
+        %li
+          %a(href="#about") About
+        %li
+          %a(href="#contact") Features
+        %li
+          %a(href="#contact") Testimonials
+        %li
+          %a(href="#contact") Contact
+    - if current_user
+      .user-info
+        %p.user-name #{current_user.user_name}, is in the house.
+        = link_to '', destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-btn glyphicon glyphicon-off"
+    - else
+      .action-btns
+        = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
+        = link_to 'Sign up', new_user_registration_path, class: "btn btn-success navbar-btn"

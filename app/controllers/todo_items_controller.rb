@@ -8,8 +8,12 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = @list.todo_items.new(todo_item_params)
 
-    @todo_item.save
-    redirect_to list_path(@list)
+    if @todo_item.save
+      redirect_to list_todo_items_path(@list)
+    else
+      flash[:warning] = "Error while trying to create an item, please try again."
+      redirect_to :back
+    end
   end
 
   def edit
@@ -25,7 +29,7 @@ class TodoItemsController < ApplicationController
     @todo_item = TodoItem.find(params[:id])
     @todo_item.destroy
 
-    redirect_to list_path(@list)
+    redirect_to list_todo_items_path(@list)
   end
 
   private
