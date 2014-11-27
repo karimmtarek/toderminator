@@ -48,6 +48,7 @@ group :development do
   gem 'thin'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'pry-rails'
 end
 
 group :test do
