@@ -34,6 +34,8 @@ gem 'spring',        group: :development
 
 # Devise: login system
 gem 'devise'
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem "figaro"
 
 group :production do
   gem 'pg'
