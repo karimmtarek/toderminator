@@ -1,19 +1,19 @@
 class TodoItemsController < ApplicationController
-  before_action :set_list
+  before_action :authenticate_user!, :set_list
 
   def new
     @todo_item = @list.todo_items.new
   end
 
   def create
-    @todo_item = @list.todo_items.new(todo_item_params)
+    @todo_item = TodoItem.new todo_item_params.merge(list:@list)
 
     if @todo_item.save
       redirect_to list_todo_items_path(@list)
     else
       flash[:warning] = "Error while trying to create an item, please try again."
       # redirect_to :back
-      render :new
+      render :index
     end
   end
 

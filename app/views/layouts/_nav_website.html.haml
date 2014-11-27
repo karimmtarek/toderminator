@@ -14,7 +14,7 @@
         %li
           -# %span(class="glyphicon glyphicon-dashboard")
           = link_to 'Dashboard', ''
-        %li
+        %li(class="#{active_class}")
           -# %span(class="glyphicon glyphicon-th-list")
           = link_to 'To-do Lists', lists_path
         - if controller_name == 'todo_items'

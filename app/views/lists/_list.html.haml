@@ -5,5 +5,4 @@
       %span(class="label label-info")
         = pluralize(list.todo_items.size, 'Item')
   .col-md-2
-    = link_to '', edit_list_path(list), class: 'btn btn-primary glyphicon glyphicon-pencil'
-    = link_to '', list, :method => :delete, :data => { :confirm => 'Is it really done?' }, class: 'btn btn-success glyphicon glyphicon-ok'
+    = link_to '', list, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger glyphicon glyphicon-remove'

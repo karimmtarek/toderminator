@@ -12,7 +12,11 @@ module ApplicationHelper
     params['id']
   end
 
+  def active_class
+    controller_name == "lists" ? "active" : ""
+  end
+
   def list_name
-    truncate(List.find(params['list_id']).name, length: 140)
+    truncate(@list.name, length: 140)
   end
 end

@@ -1,25 +1,21 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    if current_user
-      @lists = current_user.lists.all
-      @list = current_user.lists.new
-      respond_with(@lists)
-    else
-      @message = "you can't see this."
-    end
+    @lists = current_user.lists.all
+    @list = current_user.lists.new
+    respond_with(@lists)
   end
 
   def show
-    # @todo_item = @list.todo_items.new
-    respond_with(@list)
+    # respond_with(@list)
+    redirect_to list_todo_items_path(@list)
   end
 
   def new
-    # @list = List.new
     @list = current_user.lists.new
     respond_with(@list)
   end
@@ -28,17 +24,14 @@ class ListsController < ApplicationController
   end
 
   def create
-    # @list = List.new(list_params)
-    @list = current_user.lists.new(list_params)
+    @list = List.new list_params.merge(user: current_user)
     if @list.save
       flash[:success] = 'To-do list successfully created.'
-      redirect_to lists_path
-      # respond_with(@list)
+      # redirect_to lists_path
+      respond_with(@list)
     else
       flash[:danger] = "Can't create this To-do list, please try again."
-      # redirect_to :back
       respond_with(@list)
-      # render :index
     end
   end
 
