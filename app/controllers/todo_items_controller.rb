@@ -40,6 +40,6 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params.require(:todo_item).permit(:name, :days_left)
+    params.require(:todo_item).permit(:name, :days_left, :delete_at)
   end
 end

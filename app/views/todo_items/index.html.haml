@@ -8,9 +8,7 @@
         = link_to '', list_path(@list), class: "btn btn-danger glyphicon glyphicon-remove pull-right", method: :delete, data: { confirm: 'Delete this list?' }
         = link_to '', edit_list_path(@list), class: "btn btn-primary glyphicon glyphicon-pencil pull-right"
 
-- if @list.todo_items.size != 0
-  = render partial: 'todo_items/todo_item', collection: @list.todo_items
+-# - if @list.todo_items.size != 0
+= render partial: 'todo_items/todo_item', collection: @list.todo_items.order('delete_on')
 - @todo_item ||= @list.todo_items.new
 = render partial: 'todo_items/form', locals: {todo_item: @todo_item}
-
-= link_to 'Back', lists_path
