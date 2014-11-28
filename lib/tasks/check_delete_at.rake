@@ -8,7 +8,6 @@ task :check_item_for_delete => :environment do
       puts "Items: #{todo_item.name} | days_left: #{days_left} | JUST GOT DELETED."
       todo_item.destroy
     else
-      # todo_items.update(days_left: days_left)
       puts "Item: #{todo_item.name} | days_left: #{days_left}"
     end
     # todo_item.destroy
