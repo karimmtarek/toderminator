@@ -36,6 +36,8 @@ gem 'spring',        group: :development
 gem 'devise'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem "figaro"
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
+gem 'whenever', :require => false
 
 group :production do
   gem 'pg'

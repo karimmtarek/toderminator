@@ -10,4 +10,8 @@ class TodoItem < ActiveRecord::Base
   def set_delete_on
     self.delete_on = self.days_left.day.from_now
   end
+
+  def get_days_left
+   (self.delete_on - self.created_at).round / 24.hours
+  end
 end
