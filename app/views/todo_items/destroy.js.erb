@@ -1,1 +1,8 @@
-$("#todo-<%= @todo_item.id %>").remove();
+<% if @todo_item.destroyed? %>
+  $("#todo-<%= @todo_item.id %>").addClass("completed").fadeOut('slow', function(){
+    $(this).remove();
+  });
+  $('.page-header .label').html("<%= pluralize(@list.todo_items.size, 'Item') %>");
+<% else %>
+  $("#todo-<%= @todo_item.id %>").prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>

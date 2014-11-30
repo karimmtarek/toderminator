@@ -1,6 +1,8 @@
 class TodoItem < ActiveRecord::Base
   belongs_to :list
   before_save :set_delete_on
+  default_scope { order('delete_on') }
+
 
   RANGE = 1..7
   validates :name, presence: true, length: { minimum: 2 }

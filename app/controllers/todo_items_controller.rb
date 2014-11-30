@@ -1,19 +1,25 @@
 class TodoItemsController < ApplicationController
+  respond_to :html, :js
   before_action :authenticate_user!, :set_list
 
   def new
-    @todo_item = @list.todo_items.new
+    @todo_item = TodoItem.new
   end
 
   def create
     @todo_item = TodoItem.new todo_item_params.merge(list:@list)
+    @new_todo_item = TodoItem.new
 
     if @todo_item.save
-      redirect_to list_todo_items_path(@list)
+      # redirect_to list_todo_items_path(@list)
+      flash[:success] = "Item was created successfully."
     else
       flash[:warning] = "Error while trying to create an item, please try again."
-      # redirect_to :back
-      render :index
+      # render :index
+    end
+
+    respond_with(@todo_item) do |format|
+      format.html { redirect_to list_todo_items_path(@list) }
     end
   end
 
@@ -28,9 +34,17 @@ class TodoItemsController < ApplicationController
 
   def destroy
     @todo_item = TodoItem.find(params[:id])
-    @todo_item.destroy
 
-    redirect_to list_todo_items_path(@list)
+    if @todo_item.destroy
+      flash[:success] = "Item was successfully removed."
+    else
+      flash[:danger] = "Item couldn't be removed. Try again."
+    end
+
+    # redirect_to list_todo_items_path(@list)
+    respond_with(@todo_item) do |format|
+      format.html { redirect_to list_todo_items_path(@list) }
+    end
   end
 
   private

@@ -16,14 +16,17 @@
     padding-top: 20px;
     padding-bottom: 10px;
     @extend .clearfix;
+    transition:all 500ms ease-in-out;
     &:hover{
       background-color: #eee;
+      text-decoration: line-through;
     }
     h2{
       // text-transform: capitalize;
       margin-top: 5px;
       .glyphicon{
-        font-size: 70%;
+        font-size: 30%;
+        vertical-align: middle;
       }
     }
   }
@@ -58,4 +61,59 @@ h1, h2{
   background-color: #fcf8e3;
   border-color: #faebcc;
   color: #8a6d3b;
+}
+
+#todo_items_wrapper{
+  // transition:all 500ms ease;
+  // background-color: #ccc;
+}
+
+.todo-item-checkbox{
+  font-size: 28px;
+  padding: 5px;
+  color: #777;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0;
+  margin-top: 5px;
+  transition: all 500ms ease-in-out;
+  .icon{
+    display: inline-block;
+    width: 56px;
+    height: 28px;
+    left: -28px;
+    position: absolute;
+    transition: all 150ms ease-in-out;
+  }
+  .glyphicon{
+    position: absolute;
+    top: 0;
+  }
+  .glyphicon-unchecked{
+    left: 29px;
+  }
+  .glyphicon-check{
+    left: 0;
+  }
+  &:hover, &:visited{
+    text-decoration: none;
+    color: #5cb85c;
+  }
+
+}
+
+.todo-item.completed{
+  h2, label{
+    text-decoration: line-through;
+  }
+  .todo-item-checkbox{
+    color: #5cb85c;
+  }
+  .icon{
+    left: 0;
+  }
+  background-color: #DFF0D8;
 }

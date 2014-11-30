@@ -1,8 +1,8 @@
 .row.form.todo
   .wraper
-    = form_for([@list, @todo_item]) do |f|
+    = form_for([@list, todo_item], remote: true) do |f|
       -# - fail
-      = render 'shared/errors', object: @todo_item
+      = render 'shared/errors', object: todo_item
       .col-md-8
         .form-group
           -# = f.label :name

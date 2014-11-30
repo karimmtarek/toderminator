@@ -1,0 +1,8 @@
+<% if @todo_item.valid? %>
+  $("#todo_items_wrapper").prepend("<%= escape_javascript(render(@todo_item)) %>");
+  $('.page-header .label').html("<%= pluralize(@list.todo_items.size, 'Item') %>");
+  $("#todo_items_form_wrapper").html("<%= escape_javascript(render partial: 'todo_items/form', locals: {todo_item: @new_todo_item}) %>");
+<% else %>
+  $("#todo_items_form_wrapper").html("<%= escape_javascript(render partial: 'todo_items/form', locals: {todo_item: @todo_item}) %>")
+<% end %>
+

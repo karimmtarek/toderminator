@@ -1,11 +1,13 @@
 .row.todo-item{id:"todo-#{todo_item.id}"}
-  .col-md-10
+  .col-md-11
     %h2
-      %span(class="glyphicon glyphicon-chevron-right")
+      %span(class="glyphicon glyphicon glyphicon-stop")
       = todo_item.name
       %span(class="label label-info")
         = pluralize(todo_item.get_days_left, 'Day')
         left
-  .col-md-2
-    = link_to '', edit_list_todo_item_path(@list, todo_item), class: 'btn btn-primary glyphicon glyphicon-pencil'
-    = link_to '', list_todo_item_path(@list, todo_item), :method => :delete, :data => { :confirm => 'Is it really done?' }, class: 'btn btn-success glyphicon glyphicon-ok'
+  .col-md-1
+    = link_to list_todo_item_path(@list, todo_item), :method => :delete, remote: true, :data => { :confirm => 'Is it really done?' }, class: 'todo-item-checkbox' do
+      %span.icon
+        %span(class="glyphicon glyphicon-unchecked")
+        %span(class="glyphicon glyphicon-check")
