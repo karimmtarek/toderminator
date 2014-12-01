@@ -2,7 +2,7 @@
   .col-md-11
     %h2
       %span(class="glyphicon glyphicon glyphicon-stop")
-      = todo_item.name
+      = best_in_place [@list, todo_item], :name
       %span(class="label label-info")
         = pluralize(todo_item.get_days_left, 'Day')
         left

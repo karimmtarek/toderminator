@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @lists = current_user.lists.all
@@ -36,8 +36,16 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list.update(list_params)
-    redirect_to list_todo_items_path(@list)
+
+    # redirect_to list_todo_items_path(@list)
+
+    respond_to do |format|
+      if @list.update(list_params)
+        format.json { respond_with_bip(@list) }
+      else
+        format.json { respond_with_bip(@list) }
+      end
+    end
     # respond_with(@list)
   end
 

@@ -1,5 +1,5 @@
 class TodoItemsController < ApplicationController
-  respond_to :html, :js
+  respond_to :html, :js, :json
   before_action :authenticate_user!, :set_list
 
   def new
@@ -28,8 +28,17 @@ class TodoItemsController < ApplicationController
   end
 
   def update
-    @todo_item = @list.todo_items.find(params[:id]).update(todo_item_params)
-    redirect_to list_path(@list)
+    @todo_item = @list.todo_items.find(params[:id])
+
+    respond_to do |format|
+      if @todo_item.update(todo_item_params)
+        format.json { respond_with_bip(@todo_item) }
+      else
+        format.json { respond_with_bip(@todo_item) }
+      end
+    end
+
+    # respond_with @todo_item
   end
 
   def destroy

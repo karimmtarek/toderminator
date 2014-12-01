@@ -117,3 +117,23 @@ h1, h2{
   }
   background-color: #DFF0D8;
 }
+
+.best_in_place{
+  padding: 0 5px;
+  transition: all 300ms ease-in-out;
+  &:hover{
+    background-color: #DFF282;
+  }
+}
+
+.purr{
+  position: fixed;
+  text-align: center;
+  top: 30px;
+  left: 50%;
+  margin-left: -150px;
+  width: 400px;
+  padding: 20px;
+  background-color: #fcc;
+  border: solid 2px #c66;
+}

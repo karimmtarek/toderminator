@@ -2,11 +2,10 @@
   .col-md-12
     .page-header
       %h1
-        = @list.name
+        = best_in_place @list, :name
         %span(class="label label-info")
           = pluralize(@list.todo_items.size, 'Item')
         = link_to '', list_path(@list), class: "btn btn-danger glyphicon glyphicon-remove pull-right", method: :delete, data: { confirm: 'Delete this list?' }
-        = link_to '', edit_list_path(@list), class: "btn btn-primary glyphicon glyphicon-pencil pull-right"
 
 #todo_items_wrapper
   = render partial: 'todo_items/todo_item', collection: @list.todo_items

@@ -38,6 +38,8 @@ gem 'devise'
 gem "figaro"
 # Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
 gem 'whenever', :require => false
+# Best in Place is a jQuery based AJAX Inplace-Editor that takes profit of RESTful server-side controllers to allow users to edit stuff with no need of forms.
+gem "best_in_place"
 
 group :production do
   gem 'pg'
