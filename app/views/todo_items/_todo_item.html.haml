@@ -1,13 +1,14 @@
 .row.todo-item{id:"todo-#{todo_item.id}"}
-  .col-md-11
+  .col-md-12
     %h2
       %span(class="glyphicon glyphicon glyphicon-stop")
       = best_in_place [@list, todo_item], :name
       %span(class="label label-info")
-        = pluralize(todo_item.get_days_left, 'Day')
+        = pluralize(todo_item.days_left_now, 'Day')
         left
-  .col-md-1
-    = link_to list_todo_item_path(@list, todo_item), :method => :delete, remote: true, :data => { :confirm => 'Is it really done?' }, class: 'todo-item-checkbox' do
-      %span.icon
-        %span(class="glyphicon glyphicon-unchecked")
-        %span(class="glyphicon glyphicon-check")
+        = link_to list_todo_item_path(@list, todo_item), :method => :delete, remote: true, :data => { :confirm => 'Is it really done?' }, class: 'todo-item-checkbox' do
+          %span.icon
+            %span(class="glyphicon glyphicon-unchecked")
+            %span(class="glyphicon glyphicon-check")
+
+

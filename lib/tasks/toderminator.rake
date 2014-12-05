@@ -4,8 +4,8 @@ namespace :toderminator do
   task :clean_up => :environment do
     todo_items = TodoItem.all
     todo_items.each do |todo_item|
-      if todo_item.get_days_left <= 0
-        puts "Cleaned item: #{todo_item.name} | days left: #{todo_item.get_days_left}."
+      if todo_item.days_left_now <= 0
+        puts "Cleaned item: #{todo_item.name} | days left: #{todo_item.days_left_now}."
         todo_item.destroy
       end
     end

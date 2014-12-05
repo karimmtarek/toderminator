@@ -1,5 +1,8 @@
 class TodoItemsController < ApplicationController
-  respond_to :html, :js, :json
+  respond_to :html
+  respond_to :js, only: [:new, :create, :destroy]
+  respond_to :json, only: [:edit, :update]
+
   before_action :authenticate_user!, :set_list
 
   def new
@@ -9,14 +12,7 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = TodoItem.new todo_item_params.merge(list:@list)
     @new_todo_item = TodoItem.new
-
-    if @todo_item.save
-      # redirect_to list_todo_items_path(@list)
-      flash[:success] = "Item was created successfully."
-    else
-      flash[:warning] = "Error while trying to create an item, please try again."
-      # render :index
-    end
+    @todo_item.save
 
     respond_with(@todo_item) do |format|
       format.html { redirect_to list_todo_items_path(@list) }
@@ -29,28 +25,17 @@ class TodoItemsController < ApplicationController
 
   def update
     @todo_item = @list.todo_items.find(params[:id])
+    @todo_item.update(todo_item_params)
 
     respond_to do |format|
-      if @todo_item.update(todo_item_params)
-        format.json { respond_with_bip(@todo_item) }
-      else
-        format.json { respond_with_bip(@todo_item) }
-      end
+      format.json { respond_with_bip(@todo_item) }
     end
-
-    # respond_with @todo_item
   end
 
   def destroy
     @todo_item = TodoItem.find(params[:id])
+    @todo_item.destroy
 
-    if @todo_item.destroy
-      flash[:success] = "Item was successfully removed."
-    else
-      flash[:danger] = "Item couldn't be removed. Try again."
-    end
-
-    # redirect_to list_todo_items_path(@list)
     respond_with(@todo_item) do |format|
       format.html { redirect_to list_todo_items_path(@list) }
     end

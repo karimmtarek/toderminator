@@ -2,7 +2,8 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html
+  respond_to :json, only: [:edit, :update]
 
   def index
     @lists = current_user.lists.all
@@ -11,7 +12,6 @@ class ListsController < ApplicationController
   end
 
   def show
-    # respond_with(@list)
     redirect_to list_todo_items_path(@list)
   end
 
@@ -25,28 +25,20 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new list_params.merge(user: current_user)
+
     if @list.save
-      flash[:success] = 'To-do list successfully created.'
-      # redirect_to lists_path
+      flash[:popover] = 'Create your first to-do item.'
       respond_with(@list)
     else
-      flash[:danger] = "Can't create this To-do list, please try again."
       respond_with(@list)
     end
   end
 
   def update
-
-    # redirect_to list_todo_items_path(@list)
-
     respond_to do |format|
-      if @list.update(list_params)
-        format.json { respond_with_bip(@list) }
-      else
-        format.json { respond_with_bip(@list) }
-      end
+      @list.update(list_params)
+      format.json { respond_with_bip(@list) }
     end
-    # respond_with(@list)
   end
 
   def destroy
@@ -56,7 +48,6 @@ class ListsController < ApplicationController
 
   private
     def set_list
-      # @list = List.find(params[:id])
       @list = current_user.lists.find(params[:id])
     end
 
