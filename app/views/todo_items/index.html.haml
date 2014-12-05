@@ -4,8 +4,7 @@
       %h1
         = best_in_place @list, :name
         %span(class="label label-info")
-          = pluralize(@list.todo_items.size, 'Item')
-          = link_to '', list_path(@list), class: "delete glyphicon glyphicon-remove", method: :delete, data: { confirm: 'Delete this list?' }
+          = render "label"
 
 #todo_items_wrapper
   = render partial: 'todo_items/todo_item', collection: @list.todo_items

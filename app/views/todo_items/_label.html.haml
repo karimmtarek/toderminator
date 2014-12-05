@@ -1,0 +1,2 @@
+= pluralize(@list.todo_items.size, 'Item')
+= link_to '', list_path(@list), class: "delete glyphicon glyphicon-remove", method: :delete, data: { confirm: 'Delete this list?' }
